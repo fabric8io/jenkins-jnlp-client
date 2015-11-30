@@ -20,8 +20,8 @@ COPY ssh-config /root/.ssh/config
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV JENKINS_HOME /var/jenkins_home
 
-COPY podStart.sh /usr/local/bin/podStart.sh
+COPY start.sh /usr/local/bin/start.sh
 
 WORKDIR /var/jenkins_home
 
-ENTRYPOINT ["/usr/local/bin/podStart.sh"]
+ENTRYPOINT ["/usr/local/bin/start.sh"]
