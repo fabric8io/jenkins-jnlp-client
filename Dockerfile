@@ -11,7 +11,8 @@ RUN apt-get update -qq && apt-get install -qqy \
 
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh && \
-     apt-get install -y docker
+     apt-get update && \
+     apt-get install -y --force-yes docker-engine=1.8.3-0~jessie
 
 RUN mkdir -p /root/.m2/
 COPY mvnsettings.xml /root/.m2/settings.xml
