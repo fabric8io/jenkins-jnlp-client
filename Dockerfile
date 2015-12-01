@@ -12,7 +12,7 @@ RUN apt-get update -qq && apt-get install -qqy \
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh && \
      apt-get update && \
-     apt-get install -y --force-yes docker-engine=1.8.3-0~jessie
+     apt-get install -y --force-yes docker-engine=1.8.0-0~jessie
 
 RUN mkdir -p /root/.m2/
 COPY mvnsettings.xml /root/.m2/settings.xml
@@ -25,4 +25,5 @@ COPY start.sh /usr/local/bin/start.sh
 
 WORKDIR /var/jenkins_home
 
-ENTRYPOINT ["/usr/local/bin/start.sh"]
+#ENTRYPOINT ["/usr/local/bin/start.sh"]
+ENTRYPOINT ["/bin/bash"]
