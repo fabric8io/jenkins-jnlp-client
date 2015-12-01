@@ -25,5 +25,4 @@ COPY start.sh /usr/local/bin/start.sh
 
 WORKDIR /var/jenkins_home
 
-#ENTRYPOINT ["/usr/local/bin/start.sh"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/start.sh"]
