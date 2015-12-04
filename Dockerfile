@@ -19,10 +19,10 @@ COPY mvnsettings.xml /root/.m2/settings.xml
 COPY ssh-config /root/.ssh/config
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-ENV JENKINS_HOME /var/jenkins_home
+ENV JENKINS_HOME /var/jenkins
 
 COPY start.sh /usr/local/bin/start.sh
 
-WORKDIR /var/jenkins_home
+WORKDIR /var/jenkins
 
 ENTRYPOINT ["/usr/local/bin/start.sh"]
