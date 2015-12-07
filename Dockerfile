@@ -1,6 +1,15 @@
-FROM jenkinsci/jnlp-slave:latest
+FROM java:8-jdk
 
-USER root
+ENV HOME /home/jenkins
+ENV JENKINS_HOME /home/jenkins
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+
+RUN useradd -c "Jenkins user" -d $HOME -m jenkins
+
+RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.52/remoting-2.52.jar \
+  && chmod 755 /usr/share/jenkins \
+  && chmod 644 /usr/share/jenkins/slave.jar
+
 # Install Docker prerequisites
 RUN apt-get update -qq && apt-get install -qqy \
 	apt-transport-https \
@@ -22,10 +31,9 @@ RUN cd /usr/local && \
 
 RUN mkdir -p /home/jenkins/.m2/
 COPY mvnsettings.xml /home/jenkins/.m2/settings.xml
-COPY ssh-config /home/jenkins/.ssh/config
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-ENV JENKINS_HOME /home/jenkins
+RUN mkdir -p /home/jenkins/.ssh && touch /home/jenkins/.ssh/known_hosts && ssh-keyscan -t rsa github.com >> /home/jenkins/.ssh/known_hosts
+COPY ssh-config /home/jenkins/.ssh/config
 
 COPY start.sh /usr/local/bin/start.sh
 WORKDIR /home/jenkins
