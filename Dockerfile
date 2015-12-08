@@ -24,10 +24,10 @@ RUN curl -sSL https://get.docker.com/ | sh && \
      apt-get install -y --force-yes docker-engine=1.8.0-0~jessie
 
 RUN cd /usr/local && \
-    wget https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz && \
-    tar xf /usr/local/hub-linux-amd64-2.2.1.tar.gz && \
-    rm /usr/local/hub-linux-amd64-2.2.1.tar.gz && \
-    ln -s /usr/local/hub-linux-amd64-2.2.1/hub /usr/bin/hub
+    wget https://github.com/github/hub/releases/download/v2.2.2/hub-linux-amd64-2.2.2.tgz && \
+    tar xf /usr/local/hub-linux-amd64-2.2.2.tgz && \
+    rm /usr/local/hub-linux-amd64-2.2.2.tgz && \
+    ln -s /usr/local/hub-linux-amd64-2.2.2/hub /usr/bin/hub
 
 RUN mkdir -p /home/jenkins/.m2/
 COPY mvnsettings.xml /home/jenkins/.m2/settings.xml
