@@ -32,7 +32,7 @@ RUN cd /usr/local && \
 RUN mkdir -p /home/jenkins/.m2/
 COPY mvnsettings.xml /home/jenkins/.m2/settings.xml
 
-RUN mkdir -p /home/jenkins/.ssh && touch /home/jenkins/.ssh/known_hosts && ssh-keyscan -t rsa github.com >> /home/jenkins/.ssh/known_hosts
+RUN mkdir -p /home/jenkins/.ssh && touch /home/jenkins/.ssh/known_hosts && ssh-keyscan -t rsa github.com >> /home/jenkins/.ssh/known_hosts && ln -sf /home/jenkins/.ssh /root/.ssh
 COPY ssh-config /home/jenkins/.ssh/config
 
 COPY start.sh /usr/local/bin/start.sh
