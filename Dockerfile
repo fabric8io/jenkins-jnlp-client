@@ -27,7 +27,7 @@ RUN cd /usr/local && \
     wget https://github.com/github/hub/releases/download/v2.2.2/hub-linux-amd64-2.2.2.tgz && \
     tar xf /usr/local/hub-linux-amd64-2.2.2.tgz && \
     rm /usr/local/hub-linux-amd64-2.2.2.tgz && \
-    ln -s /usr/local/hub-linux-amd64-2.2.2/hub /usr/bin/hub
+    ln -s /usr/local/hub-linux-amd64-2.2.2/bin/hub /usr/bin/hub
 
 RUN mkdir -p /home/jenkins/.m2/
 COPY mvnsettings.xml /home/jenkins/.m2/settings.xml
