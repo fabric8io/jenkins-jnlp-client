@@ -29,8 +29,6 @@ RUN cd /usr/local && \
     rm /usr/local/hub-linux-amd64-2.2.2.tgz && \
     ln -s /usr/local/hub-linux-amd64-2.2.2/bin/hub /usr/bin/hub
 
-RUN mkdir -p /home/jenkins/.m2/
-COPY mvnsettings.xml /home/jenkins/.m2/settings.xml
 
 RUN mkdir -p /home/jenkins/.ssh && touch /home/jenkins/.ssh/known_hosts && ssh-keyscan -t rsa github.com >> /home/jenkins/.ssh/known_hosts
 COPY ssh-config /home/jenkins/.ssh/config
