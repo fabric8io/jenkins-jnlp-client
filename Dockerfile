@@ -1,5 +1,7 @@
 FROM fabric8/java-centos-openjdk8-jre
 
+RUN yum install -y git
+
 ENV HOME /home/jenkins
 ENV JENKINS_HOME /home/jenkins
 
@@ -11,5 +13,6 @@ RUN curl --create-dirs -sSLo /usr/share/jenkins/slave.jar http://repo.jenkins-ci
 
 COPY start.sh /usr/local/bin/start.sh
 WORKDIR /home/jenkins
+
 
 ENTRYPOINT ["/usr/local/bin/start.sh"]
