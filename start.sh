@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+export USER_ID=$(id -u)
+export GROUP_ID=$(id -g)
+envsubst < /usr/local/share/passwd.template > /tmp/passwd
+export LD_PRELOAD=libnss_wrapper.so
+export NSS_WRAPPER_PASSWD=/tmp/passwd
+export NSS_WRAPPER_GROUP=/etc/group
+
 # ***** IMPORTANT *****
 # add lots of error handling.  If this script fails it's hard to know why the pods keeps restarting
 # ***** IMPORTANT *****
@@ -37,3 +44,4 @@ else
 
 	exec java $JAVA_OPTS -cp /usr/share/jenkins/slave.jar hudson.remoting.jnlp.Main -headless $TUNNEL $URL "$@"
 fi
+
