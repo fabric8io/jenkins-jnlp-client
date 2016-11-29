@@ -22,6 +22,11 @@ if [ -d "/home/jenkins/.gnupg" ]; then
 	chmod 600 /home/jenkins/.gnupg/trustdb.gpg
 	chmod 700 /home/jenkins/.gnupg
 fi
+if [ -d "/home/jenkins/.ssh" ]; then
+        chmod 600 /home/jenkins/.ssh/config
+        chmod 700 /home/jenkins/.ssh
+        cp -r /home/jenkins/.ssh /root/
+fi
 
 #Now start the jenkins slave
 if [[ $# -eq 1 ]]; then
