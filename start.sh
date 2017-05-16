@@ -16,6 +16,11 @@ if [ -d "/home/jenkins/.ssh-git" ]; then
 	chmod 600 /home/jenkins/.ssh-git/ssh-key.pub
 	chmod 700 /home/jenkins/.ssh-git
 fi
+if [ -d "/root/.ssh-git" ]; then
+	chmod 600 /root/.ssh-git/ssh-key
+	chmod 600 /root/.ssh-git/ssh-key.pub
+	chmod 700 /root/.ssh-git
+fi
 if [ -d "/home/jenkins/.gnupg" ]; then
 	chmod 600 /home/jenkins/.gnupg/pubring.gpg
 	chmod 600 /home/jenkins/.gnupg/secring.gpg
